@@ -1,0 +1,193 @@
+.btnLight {
+  position: relative;
+  padding: 7px 10px;
+  font-size: 1.05rem;
+  border-radius: 10px;
+  border: none;
+  background-size: 300%;
+  cursor: pointer;
+  letter-spacing: 0.7px;
+  font-weight: 500;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* --- ON Mode Button --- */
+.btnOn {
+  background: linear-gradient(90deg, #b6f1b8, #bbe250);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+}
+.btnOn:hover {
+  background: linear-gradient(90deg, #93e097, #9bbe9d);
+  // background: linear-gradient(90deg, #66bb6a, #43a047);
+  transform: scale(1.05);
+}
+
+/* --- OFF Mode Button --- */
+.btnOff {
+  background: linear-gradient(90deg, #0a0a0a, #0f0e0e);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(239, 83, 80, 0.4);
+}
+.btnOff:hover {
+  background: linear-gradient(90deg, #aaf388, #ec817f);
+  transform: scale(1.05);
+}
+
+/* --- Moving Gradient Animation --- */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* --- Glowing Border --- */
+.btnLight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background: linear-gradient(120deg, #00ff99, #00e676, #4caf50) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  animation: borderGlow 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes borderGlow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* --- Active Press Effect --- */
+.btnLight:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 10px rgba(0, 255, 128, 0.4);
+}
+
+/* --- Card Styles --- */
+.card {
+  transition: all 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card01,
+.card02 {
+  padding: 20px;
+  background-color: rgba(36, 32, 32, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+}
+
+/* --- Input Field --- */
+input {
+  border: 0;
+  font-size: 1.15rem;
+  color: rgb(46, 38, 38);
+  border-radius: 6px;
+  font-style: italic;
+}
+
+/* --- Todo Items --- */
+.todo-item {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+.todo-item:hover {
+  background-color: #f1f5ff;
+  transform: scale(1.02);
+}
+
+/* --- List Items --- */
+ul li {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: rgb(94, 90, 90);
+  color: white;
+}
+
+/* --- Icon Section --- */
+.icondev {
+  margin-top: 7px;
+  display: flex;
+  gap: 2rem;
+}
+.icondev mat-icon {
+  font-size: 25px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+.icondev mat-icon:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* --- No Data --- */
+.noData {
+  font-size: 1.25rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgb(240, 81, 142);
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 0 0 0;
+}
+
+/* --- Animations --- */
+.fade-in {
+  animation: fadeIn 0.9s ease-in;
+}
+.slide-in {
+  animation: slideIn 0.9s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 425px) {
+  .col-md-6 {
+    margin: 20px;
+  }
+}

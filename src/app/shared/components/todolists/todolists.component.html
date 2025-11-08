@@ -1,0 +1,79 @@
+
+<div class="text-right mb-4">
+  <button mat-stroked-button color="primary" class="btnLight" 
+  (click)="toggleDarkMode()" [ngClass]="isDarkMode ? 'btnOff' : 'btnOn'">
+    <!-- <mat-icon fontIcon="brightness_6"></mat-icon> -->
+    <!-- {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }} -->
+    {{ isDarkMode ? 'Change Theme Off' : 'Change Theme On' }}
+    
+
+  </button>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+<div class="card shadow-sm border-0 rounded-4 card01 fade-in">
+<div class="card-body">
+<h5 class="card-title mb-3 text-primary text-center">Todo Manager</h5>
+
+<div class="form-group">
+<input type="text" class="form-control form-control-lg mb-3 input" #todo   placeholder="Please Enter any value...">
+<div class="text-center mt-3">
+<button (click)="addTodo(todo)" *ngIf="!isEdit" mat-raised-button color="primary">Add Todo</button>
+<button (click)="onUpdate(todo)"  *ngIf="isEdit" mat-raised-button color="accent">Update Todo</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    
+
+
+<div class="col-md-6">
+<div class="card shadow-sm border-0 rounded-4 card02 fade-in">
+<div class="card-body">
+<h5 class="card-title mb-3 text-success text-center">Todo List</h5>
+
+<ul class="list-group" *ngIf="todoArr.length>0; else noMsg">
+<li *ngFor="let t of todoArr" class=" mb-5 list-group-item d-flex justify-content-between todo-Item slide-in">
+<span class="pt-2"> {{t.todoItem}}</span>
+   
+
+<div class="icondev">
+<mat-icon (click)="onEdit(t)"
+  matTooltip="Edit Todo"
+   class="text-primary mx-2 cursor-pointer"
+mat-raised-button
+color="primary"
+aria-label="Example home icon"
+fontIcon="edit"
+></mat-icon>
+ 
+<mat-icon *ngIf="editTodoId !== t.todoId" (click)="onDelete(t.todoId)"
+ matTooltip="Delete Todo"
+ class="text-danger mx-1 cursor-pointer"
+mat-raised-button
+color="warn"
+aria-label="Example home icon"
+fontIcon="delete"
+></mat-icon>
+</div>
+</li>
+</ul>
+
+<ng-template #noMsg>
+ <p class="noData fade-in">Not Data Found!</p>
+</ng-template>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+ 
+
+
+
